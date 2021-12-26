@@ -5,10 +5,10 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
-from cutecharts.charts import Line
+#from cutecharts.charts import Line
 from PIL import Image
 
-import report_data as rp
+#import report_data as rp
 
 pd.set_option("precision", 2)
 # pd.reset_option('precision')

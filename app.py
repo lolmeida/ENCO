@@ -1,14 +1,16 @@
-import datetime
-
-import numpy as np
+"""
+Cabeça
+"""
 import pandas as pd
-import plotly.express as px
-import plotly.graph_objects as go
+
+# import plotly.express as px
+# import plotly.graph_objects as go
 import streamlit as st
-#from cutecharts.charts import Line
+
+# from cutecharts.charts import Line
 from PIL import Image
 
-#import report_data as rp
+import report_data as rp
 
 pd.set_option("precision", 2)
 # pd.reset_option('precision')
@@ -19,22 +21,25 @@ pd.options.display.float_format = "{:,.2f}".format
 st.set_page_config(page_title="Reunião do Conselho de Direção", layout="wide")
 
 
-#@st.cache()
+@st.cache()
 def get_texto():
+    """
+    descriçao da funcao
+    """
     return rp.getTxt()
 
 
 txt = get_texto()
 
 
-def reset_key():
-    for key in st.session_state.keys():
-        del st.session_state.keys[key]
-
-
-def texto_report(txt, mapa, x=0):
+def texto_report(texto, mapa, indice=0):
+    """
+    descriçao da funcao
+    """
     posicao = ["TextoAntes", "TextoDepois"]
-    result = txt[(txt["Mapa"] == mapa) & (txt[posicao[x]] != "")][posicao[x]]
+    result = texto[(texto["Mapa"] == mapa) & (texto[posicao[indice]] != "")][
+        posicao[indice]
+    ]
     texto = result.tolist()
     return st.write(
         "".join(texto),
@@ -88,16 +93,18 @@ if st.checkbox("Convocatória"):
             st.write("[...]")
 
         if st.checkbox(
-            "3. Apresentação e partilha de conhecimentos obtidos durante as formações realizadas em Novembro de 2021"
+            "3. Apresentação e partilha de conhecimentos obtidos durante as\
+                 formações realizadas em Novembro de 2021"
         ):
             # st.title('Balanço da visita à São Tomé')
             a_1, a_2 = st.columns(2)
             # a_1.image("balanco_visita_PCA/balanco_visita.jpg", width=1080)
         if st.checkbox("4. Diversos"):
             if st.checkbox(
-                "4.1 Ponto da situação da Estratégia e do Roadmap de transformação digital"
+                "4.1 Ponto da situação da Estratégia e do Roadmap \
+                    de transformação digital"
             ):
-                # st.title('Ponto da situação da Estratégia e do Roadmap de transformação digital')
+
                 a_1, a_2 = st.columns(2)
                 b_1, b_2 = st.columns(2)
 
@@ -114,13 +121,7 @@ if st.checkbox("Convocatória"):
 
                 # b_1.image('Roadmap_TD/Roadmap_TD_4.jpg', width=600)
 
-                b_2.write(
-                    """
-                AS MELHORIAS DA TRANSFORMAÇÃO DIGITAL
-                
-
-                """
-                )
+                b_2.write("""AS MELHORIAS DA TRANSFORMAÇÃO DIGITAL""")
 
             if st.checkbox("FIM"):
                 st.markdown("### Obrigado !")

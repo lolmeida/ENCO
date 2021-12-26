@@ -19,7 +19,7 @@ pd.options.display.float_format = "{:,.2f}".format
 st.set_page_config(page_title="Reunião do Conselho de Direção", layout="wide")
 
 
-@st.cache()
+#@st.cache()
 def get_texto():
     return rp.getTxt()
 
